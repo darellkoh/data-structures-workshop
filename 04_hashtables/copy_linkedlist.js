@@ -1,36 +1,33 @@
-// Our attempt 
 function LinkedList() {
     this.tail = null;
     this.head = null;
 };
 
 LinkedList.prototype.addToTail = function(nodeName) {
-    var newNode = new Node(nodeName); 
+    var newNode = new Node(nodeName);
         if(this.tail === null){
-            this.head = newNode;  
+            this.head = newNode;
         }
 
         if(this.tail){
-            this.tail.next = newNode; 
-            newNode.previous = this.tail; 
-        }  
+            this.tail.next = newNode;
+            newNode.previous = this.tail;
+        }
         newNode.next = null;
-        this.tail = newNode;  
-    // this.head = this.tail; 
-    // this.tail = new Node(nodeName);
+        this.tail = newNode;
 };
 
 LinkedList.prototype.addToHead = function(nodeName) {
     var newNode = new Node(nodeName);
     if(this.tail === null){
-        this.tail = newNode; 
+        this.tail = newNode;
     }
 
     if(this.head){
-        this.head.previous = newNode; 
+        this.head.previous = newNode;
         newNode.next = this.head;
     };
-    this.head = newNode; 
+    this.head = newNode;
 
 };
 
@@ -64,28 +61,28 @@ LinkedList.prototype.removeTail = function() {
 };
 
 
-LinkedList.prototype.search = function(searchTerm) {   
+LinkedList.prototype.search = function(searchTerm) {
     function nodeChecker(searchTerm, node){
         if(typeof searchTerm === 'string'){
             if(node.value.valueOf() === searchTerm){
-                console.log("hello", node.value); 
-                return node.value; 
+                console.log("hello", node.value);
+                return node.value;
             } else if(node.next === null) {
-                return null; 
+                return null;
             } else {
-                return nodeChecker(searchTerm, node.next); 
+                return nodeChecker(searchTerm, node.next);
             }
         } else {
             if(searchTerm(node.value.valueOf())){
-                return node.value; 
+                return node.value;
             } else if(node.next === null) {
-                return null; 
+                return null;
             } else {
-                return nodeChecker(searchTerm, node.next); 
+                return nodeChecker(searchTerm, node.next);
             }
         }
     }
-    return nodeChecker(searchTerm, this.head); 
+    return nodeChecker(searchTerm, this.head);
 };
 
 function Node(value) {
@@ -95,7 +92,7 @@ function Node(value) {
 };
 
 
-// Alternative 
+// Alternative
 'use strict';
 
 function Node (value, prev, next) {
